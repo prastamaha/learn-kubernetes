@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Replicaset
+metadata:
+  name: myapp-replicaset
+  labels:
+    app: myapp
+    type: frontend
+spec:
+  template:
+    # pod def file
+    metadata:
+      name: myapp-pod
+      labels:
+        app: myapp
+        type: frontend
+    spec:
+      containers:
+        - name: nginx-container
+          image: nginx:latest
+  replicas: 3
+  selector:
+    matchLabels:
+      # pods labels which monitored
+      type: frontend
+      
+
+
+# replicaset can monitor existing pod using selector and label
+
+# create relicaset
+# kubectl create -f replicaset.yml
+
+# for update number of replicaset by edit this file replicas
+# kubectl replace -f replicaset.yml
+
+# or using this command without update this file
+# kubectl scalle --replicas=6 -f replicaset.yml

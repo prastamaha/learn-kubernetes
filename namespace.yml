@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: dev
+
+# create
+# kubectl create -f namespace.yml
+
+# list
+# kubectl get ns
+
+# change default ns
+# kubectl config set-contect $(kubectl config current-context) --namespace=dev
+
+# limit resuorce in ns
+# using resource quota

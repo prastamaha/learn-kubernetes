@@ -1,0 +1,26 @@
+apiVersion: v1beta1
+kind: Deployment
+metadata:
+  name: myapp-deployment
+  labels:
+    app: myapp
+    type: frontend
+spec:
+  template:
+    metadata:
+      name: myapp
+      type: frontend
+    spec:
+      containers:
+        - name: nginx-container
+          image: nginx:latest
+  replicas: 3
+  selector: 
+    matchLabels:
+      app: myapp
+
+# deployment mirip seperti replicaset, tetapi memiliki utilitas
+# yang lebih advance seperti rolling update, pause, resume
+
+# buat deployment yml file menggunakan command
+# kubectl create deployment --image=nginx --dry-run -o yaml > deployment.yml

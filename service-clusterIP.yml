@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service
+spec:
+  type: ClusterIP
+  ports:
+    - targetPort: 80    # pod port
+      port: 80          # service port
+  selector:
+    app: myapp
+    type: frontend
+
+# ClusterIP biasanya digunakan untuk menghubungkan grup dari pod
+# dengan fungsi yang berbeda
+
+# dengan dibuatnya service ini, pods dengan tipe frontend dan backend dapat
+# terhubungkan dengan menggunakan nama dari service (frontend-service) atau menggunakan
+# ip dari service

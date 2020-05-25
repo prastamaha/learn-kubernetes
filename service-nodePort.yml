@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: myapp-service
+spec:
+  type: NodePort
+  ports:
+    - targetPort: 80      # pod port
+      port: 80            # service port
+      nodePort: 30008     # node port
+  selector:
+    # pod label
+    app: myapp
+    type: frontend
+
+# nodePort digunakan untuk forward traffic dari node menuju pods
+# jika tidak mengisi target port, akan dianggap sama dengan port
+# jika tidak mengisi nodePort, maka akan diisi secara otomatis oleh kubernetes
+
+# list svc
+# kubectl get svc
+
+# menggunakan command untuk generate service yml file
+# kubectl expose deployment $(deployment-name) --type=NodePort --target-port=8080 --name=myapp-service --dry-run -o yaml > service-nodePort.yml

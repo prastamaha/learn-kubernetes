@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-pod
+  labels:
+    app: myapp
+    type: frontend
+spec:
+  containers:
+    - name: nginx-container
+      image: nginx:latest
+    
+
+# deploy pod
+# kubectl create -f pod.yaml
+
+# display pod
+# kubectl get pods
+
+# detail information
+# kubectl describe pod myapp-pod
+
+# create pod yml file using command
+# kubectl run nginx --image=nginx --restart=Never --dry-run -o yaml > pod.yml
